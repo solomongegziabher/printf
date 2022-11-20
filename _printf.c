@@ -38,12 +38,12 @@ int _printf(const char *format, ...)
 			count++; 
 			continue;
 		}
-		if (!format[count + 1])
+		if (!format[count])
 			return (-1);
 		_putchar(format[count]);
 		stringcounter++;
-		if (format[count + 1] == '%')
-			count += 2;
+		if (format[count] == '%')
+			count ++;
 		else
 			count++;
 	}
