@@ -8,9 +8,10 @@ int _printf(const char *format, ...)
 {
 	va_list arg;
 	int (*f)(va_list), count, stringcounter;
+	char *space;
 
 	count = stringcounter = 0;
-	char *space = " ";
+	space = " ";
 	 va_start(arg, format);
 
 	if (*format == '\0')
