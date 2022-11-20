@@ -10,9 +10,8 @@ int _printf(const char *format, ...)
 	int (*f)(va_list), count, stringcounter;
 	char *space;
 
-	count = stringcounter = 0;
-	space = " ";
-	 va_start(arg, format);
+	count = stringcounter = 0, space = " ";
+	va_start(arg, format);
 
 	if (*format == '\0')
 		return (-1);
@@ -26,24 +25,21 @@ int _printf(const char *format, ...)
 		}
 		if (format[count] == '\0')
 			return (stringcounter);
-		count++;
-		while (format[count] == *space)
-		{
+		while (format[count + 1] == *space)
 			count++;
-		}
-		f = function_finder(&format[count]);
+		f = function_finder(&format[count + 1]);
 		if (f != NULL)
 		{
 			stringcounter += f(arg);
-			count++; 
+			count += 2;
 			continue;
 		}
-		if (!format[count])
+		if (!format[count + 1])
 			return (-1);
 		_putchar(format[count]);
 		stringcounter++;
-		if (format[count] == '%')
-			count ++;
+		if (format[count + 1] == '%')
+			count += 2;
 		else
 			count++;
 	}
