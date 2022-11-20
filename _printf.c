@@ -1,25 +1,20 @@
-
-#include <stdarg.h>
 #include"main.h"
 /**
  * _printf - a function that outputs according to the given specifier
- *
  * @format: is a string to be printed
- *
  * Return: length of the output string
  */
-
 int _printf(const char *format, ...)
 {
 	va_list arg;
-	int (*f)(va_list);
-	int count, stringcounter;
+	int (*f)(va_list), count, stringcounter;
 
 	count = stringcounter = 0;
+	char *space = " ";
+	 va_start(arg, format);
 
 	if (*format == '\0')
 		return (-1);
-	va_start(arg, format);
 	while (format[count])
 	{
 		while (format[count] != '%'  && format[count])
@@ -33,20 +28,19 @@ int _printf(const char *format, ...)
 		count++;
 		while (format[count] == *space)
 		{
-			count ++;
+			count++;
 		}
-		f = function_finder(&format[count + 1]);
+		f = function_finder(&format[count]);
 		if (f != NULL)
 		{
 			stringcounter += f(arg);
-			count += 2;
+			count++; 
 			continue;
 		}
 		if (!format[count + 1])
 			return (-1);
 		_putchar(format[count]);
 		stringcounter++;
-
 		if (format[count + 1] == '%')
 			count += 2;
 		else
