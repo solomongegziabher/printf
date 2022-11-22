@@ -13,21 +13,22 @@ int print_binary(va_list b)
 {
 	int j, k, l, count;
 	int integer[100];
+	unsigned int num;
 
-    unsigned int num = va_arg(b, unsigned int);
-    
-     k = count = 0;
-    while (num != 0)
-    {
-	    j = num % 2;
-	    num = num / 2;
-	    integer[k] = j;
-	    k++;
-    }
-    for (l = k - 1; l >= 0; l--)
-    {
-	    _putchar(integer[l] + '0');
-	    count++;
-    }
-    return (count);
+	num = va_arg(b, unsigned int);
+	k = count = 0;
+
+	while (num != 0)
+	{
+		j = num % 2;
+		num = num / 2;
+		integer[k] = j;
+		k++;
+	}
+	for (l = k - 1; l >= 0; l--)
+	{
+		_putchar(integer[l] + '0');
+		count++;
+	}
+	return (count);
 }
