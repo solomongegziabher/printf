@@ -23,6 +23,8 @@ int _putchar(char c);
 int _printf(const char *format, ...);
 int print_char(va_list c);
 int print_string(va_list chars);
+int print_numbers(va_list d);
+int print_unsigned(va_list u);
 int (*function_finder(const char *format))(va_list);
 
 #endif
