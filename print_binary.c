@@ -11,6 +11,7 @@
  */
 int print_binary(va_list b)
 {
+<<<<<<< HEAD
 	int j, k, l, count;
 	int integer[100];
 	unsigned int num;
@@ -29,6 +30,37 @@ int print_binary(va_list b)
 	{
 		_putchar(integer[l] + '0');
 		count++;
+=======
+	unsigned int len, powten, j, digit, n, num;
+	int count = 0;
+
+	n = va_arg(b, unsigned int);
+	if (n != 0)
+	{
+		num = n;
+		len = 0;
+		while (num != 0)
+		{
+			num /= 2;
+			len++;
+		}
+		powten = 1;
+		for (j = 1; j <= len - 1; j++)
+			powten *= 2;
+		for (j = 1; j <= len; j++)
+		{
+			digit = n / powten;
+			_putchar(digit + '0');
+			count++;
+			n -= digit * powten;
+			powten /= 2;
+		}
+	}
+	else
+	{
+		_putchar('0');
+		return (1);
+>>>>>>> 67702a4dd3715ad40e592f5a47511966fae3788e
 	}
 	return (count);
 }
