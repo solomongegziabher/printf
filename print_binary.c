@@ -3,37 +3,43 @@
 #include <stdlib.h>
 
 /**
- * print_number -print out numbers
+ * print_binary - convetrt the positive int to binary numbers
  *
- * @num: the nuber to be printed
- *
- * Description: it will display the number entered
+ * @b: the number to be printed to binary
+ * Return: the length of the binary number.
  *
  */
 int print_binary(va_list b)
 {
-	int j, k, l, num, count;
-	int integer[50];
+	unsigned int len, powten, j, digit, n, num;
+	int count = 0;
 
-    num = va_arg(b, int);
-    
-    count = 0;
-	if (num < 0)
+	n = va_arg(b, unsigned int);
+	if (n != 0)
 	{
-		return (0);
+		num = n;
+		len = 0;
+		while (num != 0)
+		{
+			num /= 2;
+			len++;
+		}
+		powten = 1;
+		for (j = 1; j <= len - 1; j++)
+			powten *= 2;
+		for (j = 1; j <= len; j++)
+		{
+			digit = n / powten;
+			_putchar(digit + '0');
+			count++;
+			n -= digit * powten;
+			powten /= 2;
+		}
 	}
-	  while (num != 0)
-		{
-			j = num % 2;
-			num = num / 2;
-			integer[k] = j;
-			k++;
-		}
-		for (l = k - 1; l >= 0; l--)
-		{
-			_putchar(integer[l] + '0');
-             count++;
-		}
-	
-    return (count);
+	else
+	{
+		_putchar('0');
+		return (1);
+	}
+	return (count);
 }
