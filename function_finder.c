@@ -15,6 +15,7 @@ int(*function_finder(const char *format))(va_list)
 		{"s", print_string},
 	       	{"d", print_numbers},
 	       	{"i", print_numbers},
+	       	{"b", print_binary},
 	       	{"u", print_unsigned},
 		{NULL, NULL}
 	};
