@@ -40,7 +40,7 @@ int print_numbers(va_list d)
 	}
 	else
 	{
-	       	_putchar('0');
+		_putchar('0');
 		return (1);
 	}
 }
