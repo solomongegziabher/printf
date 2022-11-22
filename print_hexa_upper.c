@@ -1,4 +1,6 @@
 #include "main.h"
+#include <stdio.h>
+#include <stdlib.h>
 
 /**
  * print_hexa_upper - Prints an unsigned number in upper hexadecimal notation
