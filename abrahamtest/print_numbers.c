@@ -36,11 +36,11 @@ int print_numbers(va_list d)
 			_putchar(integer[l] + '0');
 			count++;
 		}
+		return (count);
 	}
 	else
 	{
 		_putchar('0');
 		return (1);
 	}
-	return (count);
 }
