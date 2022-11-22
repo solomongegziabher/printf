@@ -9,31 +9,21 @@
  */
 int print_numbers(va_list d)
 {
-	int i, j, k, l, num, count;
+	int j, k, l, num, count;
 	int integer[50];
 
 	num = va_arg(d, int);
-	count = 0;
+	k = count = 0;
 
-	if (num < 0)
-	{	_putchar('-');
-		num = -1 * num;
-		count++;
-	}
-	if (num >= 0  && num < 100)
+
+	if (num != 0)
 	{
-		i = num / 10;
-		j = num % 10;
-		if (num > 9)
+		if (num < 0)
 		{
-			_putchar(i + '0');
+			_putchar('-');
+			num = -1 * num;
 			count++;
 		}
-		_putchar(j + '0');
-		count++;
-	}
-	else if (num >= 100)
-	{
 		while (num != 0)
 		{
 			j = num % 10;
@@ -46,6 +36,11 @@ int print_numbers(va_list d)
 			_putchar(integer[l] + '0');
 			count++;
 		}
+		return (count);
 	}
-	return (count);
+	else
+	{
+	       	_putchar('0');
+		return (1);
+	}
 }
