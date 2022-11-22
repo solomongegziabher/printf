@@ -9,32 +9,36 @@
  */
 int print_numbers(va_list d)
 {
-	int j, k, l, num, count;
-	int integer[50];
+	int len, powten, j, digit, n, count = 0, num;
 
-	num = va_arg(d, int);
-	k = count = 0;
-
-
-	if (num != 0)
+	n = va_arg(d, int);
+	if (n != 0)
 	{
-		if (num < 0)
+		if (n < 0)
 		{
 			_putchar('-');
-			num = -1 * num;
 			count++;
 		}
+		num = n;
+		len = 0;
 		while (num != 0)
 		{
-			j = num % 10;
-			num = num / 10;
-			integer[k] = j;
-			k++;
+			num /= 10;
+			len++;
 		}
-		for (l = k - 1; l >= 0; l--)
+		powten = 1;
+		for (j = 1; j <= len - 1; j++)
+			powten *= 10;
+		for (j = 1; j <= len; j++)
 		{
-			_putchar(integer[l] + '0');
+			digit = n / powten;
+			if (n < 0)
+				_putchar((digit * -1) + 48);
+			else
+				_putchar(digit + '0');
 			count++;
+			n -= digit * powten;
+			powten /= 10;
 		}
 	}
 	else
