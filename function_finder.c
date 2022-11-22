@@ -17,6 +17,7 @@ int(*function_finder(const char *format))(va_list)
 	       	{"i", print_numbers},
 	       	{"b", print_binary},
 	       	{"u", print_unsigned},
+	       	{"o", print_octal},
 		{NULL, NULL}
 	};
 	int i;
